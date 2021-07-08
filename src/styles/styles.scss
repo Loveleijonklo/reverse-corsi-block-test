@@ -1,0 +1,383 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap');
+
+$pri-color: #eee;
+$bac-color: #444;
+$acc-color: mediumspringgreen;
+$war-color: indianred;
+
+$std-border-width: 2px;
+$transition-time: 400ms;
+
+$font-mono: Roboto Mono, monospace;
+
+@mixin std-border {
+    border: $std-border-width $pri-color solid;
+}
+// @mixin col-border($col) {
+//     border: $std-border-width $col solid;
+// }
+
+@mixin colored-button($col, $hover-text-col) {
+    border: $std-border-width $col solid;
+    color: $col;
+    background-color: $bac-color;
+    transition: color $transition-time, background-color $transition-time;
+    &:hover {
+        color: $hover-text-col;
+        background-color: $col;
+    }
+    &:active {
+        color: $hover-text-col;
+        background-color: $col;
+    }
+}
+
+@mixin nav-button() {
+    padding: 0.5rem 1rem ;
+    margin-top: 2rem;
+}
+
+body {
+    // margin: 0;
+    color: $pri-color;
+    background-color: $bac-color;
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    font-size: 18px;
+    p {
+        line-height: 1.5;
+        hyphens: auto;
+    }
+    a {
+        color: $pri-color;
+    }
+
+    button {
+        font-family: $font-mono;
+        font-size: 1.2rem;
+    
+        @include std-border();
+        cursor: pointer;
+    
+        color: $pri-color;
+        background-color: $bac-color;
+        transition: color $transition-time, background-color $transition-time;
+        &:hover {
+            color: $bac-color;
+            background-color: $pri-color;
+        }
+        
+        // a {
+        //     text-decoration: none;
+        //     color: $pri-color;
+        //     background-color: $bac-color;
+        //     transition: color $transition-time, background-color $transition-time;
+            
+            
+        //     &:visited {
+        //         color: $pri-color;
+        //     }
+        // }
+    }
+}
+
+// Class wrapper for route switch transitions
+.switch-wrapper {
+    position: relative;
+}
+   
+.switch-wrapper > div {
+    position: absolute;
+    width: 100%;
+}
+
+// code {
+//     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+// }
+
+.App {
+    // @include std-border();
+    margin: auto;
+    max-width: 640px;
+    padding: 0 0.5rem;
+}
+
+
+
+
+.button {
+    &--back {
+        @include colored-button($pri-color, $bac-color);
+        @include nav-button();
+    }
+    &--start {
+        @include colored-button($acc-color, $pri-color);
+        @include nav-button();
+    }
+    &--menu {
+        // @include col-border($acc-color);
+        color: $acc-color;
+        padding: 1rem;
+        margin: 1rem;
+
+        &:hover{
+            color: $pri-color;
+            background-color: $acc-color;
+        }
+        // width: 100%;
+        &--test {
+            @include colored-button($acc-color, $pri-color);
+            // width: 100%;
+            // width: 50%;
+            width: 100%;
+        }
+        &--other {
+            @include colored-button($pri-color, $bac-color);
+            width: 100%;
+        }
+    }
+    &--reset {
+        @include colored-button($war-color, $pri-color);
+        @include nav-button();
+        margin-top: 0rem;
+        margin-bottom: 2rem;
+    }
+}
+
+@mixin flex-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.agreement {
+    padding: 1rem;
+}
+
+.menu {
+    @include flex-menu();
+    // @include std-border();
+    // margin: 2rem;
+    // margin: auto;
+    // padding: 1rem;
+    // width: 640px; 
+    &__app-title {
+        text-transform: uppercase;
+        font-size: 1rem;
+        margin: 0;
+    }
+    &__tests {
+        // @include std-border();
+        @include flex-menu();
+        margin: 0.7rem 0;
+    }
+    &__others {
+        @include flex-menu();
+    }
+    // button {
+    //     padding:
+    //     margin: 2rem;
+    // }
+}
+
+.explain-page {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__content {
+        margin-top: 3rem;
+        width: 300px;
+    }
+}
+
+.end-notice {
+    // @include std-border();
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5rem auto;
+    width: 300px;
+}
+
+.results {
+    &__coffee-data {
+        &__input {
+            @include std-border();
+            height: 2rem;
+            width: 3rem;
+            padding: 0rem 0.5rem;
+            background-color: $bac-color;
+            color: $pri-color;
+            font-size: 1.5rem;
+            font-family: $font-mono;
+        }
+    }
+    &__test-data {
+        // background-color: red;
+        &__title {
+            // font-size: 1.5rem;
+        }
+        &__container {
+            @include std-border();
+            margin: 1rem 0;
+            padding: 0.5rem;
+            max-width: 280px;
+            &__test-name {
+                margin: 0;
+                font-weight: bolder;
+            }
+            &__results {    
+                font-family: $font-mono;
+                font-size: 1.5rem;
+                margin: 0;
+            }
+        }
+        &__send-request {
+            color: $acc-color;
+            margin-top: 3rem;
+        }
+    }
+    &__warning {
+        color: $war-color;
+        margin-top: 3rem;
+    }
+}
+
+.nback {
+    &__attention {
+        font-size: 1.5rem;
+    }
+    &__current-data {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        &__num {
+            // @include std-border();
+            // border-radius: 50%;
+            font-family: $font-mono;
+            margin: 0.75rem;
+            width: 2.5rem;
+            // height: 2.5rem;
+            // height: 3rem;
+            text-align: center;
+            font-size: 2rem;
+            // background-color: red;
+            &--hidden {
+                background-color: $pri-color;
+            }
+        }
+    }
+    &__qa {
+        &__question {
+            text-align: center;
+            margin: 2rem auto;
+            font-size: 1.5rem;
+        }
+        &__answers {
+
+            &--nb {
+                // border: 1px solid teal;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(4, 1fr);
+                justify-items: center;
+                // justify-content: space-around;
+                // flex-wrap: wrap;
+                &__answer {
+                    width: 5rem;
+                    padding: 0.25rem 1rem;
+                    font-family: $font-mono;
+                    font-size: 2rem;
+                    margin: 0.75rem;
+                }
+            }
+
+            &--mu {
+                display: flex;
+                justify-content: space-around;
+                &__answer {
+                    width: 7rem;
+                    padding: 0.4rem 1rem;
+                    // font-size: 2rem;
+                }
+            }
+            
+        }
+    }
+}
+
+.corsiblock {
+    &__instruction {
+        height: 6rem;
+        &__content {
+            text-align: center;
+            font-size: 1.2rem;
+        }
+    }
+    &__blocks {
+        // @include std-border();
+        margin: auto;
+        display: grid;
+        grid-template-rows: repeat(7, 1fr);
+        grid-template-columns: repeat(5, 1fr);
+        grid-row-gap: 0.5rem;
+        grid-column-gap: 0.2rem;
+        justify-items: center;
+
+        &__container {
+            // border: 1px red solid;
+            // padding: 1rem;
+            width: 3rem;
+            height: 3rem;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+            &__block {
+                // @include std-border();
+                // margin: auto;
+                // align-self: right;
+                width: 2.5rem;
+                height: 2.5rem;
+                background-color: #777;
+
+                box-shadow: 7px 7px #222;
+
+                transition:
+                    width $transition-time, 
+                    height $transition-time,
+                    background-color $transition-time;
+
+                &--clickable {
+                    cursor: pointer;
+                    // &:hover {
+                    //     background-color: #999;
+                    // }
+                }
+                &--highlighted {
+                    background-color: $acc-color;
+                    width: 3rem;
+                    height: 3rem;
+                }
+                // &--clicked {
+                //     background-color: $acc-color;
+                //     width: 3rem;
+                //     height: 3rem;
+                // }
+            }
+
+        }
+
+
+    }
+}

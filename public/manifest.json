@@ -1,0 +1,8 @@
+{
+  "short_name": "Working memory testing tool",
+  "name": "A working memory testing tool to test the effect of coffee drinking habit",
+  "start_url": "https://bsc301tsa2020a5cs1.netlify.app/",
+  "display": "standalone",
+  "theme_color": "#00FA9A",
+  "background_color": "#444"
+}
