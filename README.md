@@ -1,2 +1,3 @@
 # reverse-corsi-block-test
-Hello world
+This is a addition to https://github.com/JunoNgx/working-memory-test with backwards Corsi block-tapping test added. 
+ 
